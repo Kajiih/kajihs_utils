@@ -36,7 +36,7 @@ print(get_first(d, ["x", "a", "b"]))  # Output: 1
 
 # Batch a sequence:
 seq = list(range(10))
-list(batch(seq, 3))
+print(list(batch(seq, 3)))  # Output: [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
 ```
 
 ## 🧾 License
