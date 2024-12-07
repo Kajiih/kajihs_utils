@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHON_VERSION: "3.12"
+      UV_SYSTEM_PYTHON: 1
     steps:
       - name: 🛎️ Checkout
         uses: actions/checkout@v4
