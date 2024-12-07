@@ -27,7 +27,7 @@ pip install kajihs-utils
 Embed code like this:
 
 ```python:dev/readme_snippets/formatted/features_demo.py
-from kajihs_utils.core import batch, get_first
+from kajihs_utils import batch, get_first
 
 # Get first key existing in a dict:
 d = {"a": 1, "b": 2, "c": 3}
