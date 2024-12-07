@@ -8,12 +8,6 @@
 
 Various, fully typed, hopefully sanely implemented and somewhat random utilities.
 
-## Contents <!-- omit from toc -->
-
-- [⬇️ Installation](#️-installation)
-- [🏃 Getting Started](#-getting-started)
-- [🧾 License](#-license)
-
 ## ⬇️ Installation
 
 You can install **kajihs_utils** via pip:
@@ -24,15 +18,12 @@ pip install kajihs-utils
 
 ## 🏃 Getting Started
 
-Embed code like this:
-
 ```python:dev/readme_snippets/formatted/features_demo.py
 from kajihs_utils import batch, get_first
 
 # Get first key existing in a dict:
 d = {"a": 1, "b": 2, "c": 3}
 print(get_first(d, ["x", "a", "b"]))  # Output: 1
-
 
 # Batch a sequence:
 seq = list(range(10))

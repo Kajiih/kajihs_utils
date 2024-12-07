@@ -4,7 +4,6 @@ from kajihs_utils import batch, get_first
 d = {"a": 1, "b": 2, "c": 3}
 print(get_first(d, ["x", "a", "b"]))
 
-
 # Batch a sequence:
 seq = list(range(10))
 print(list(batch(seq, 3)))
