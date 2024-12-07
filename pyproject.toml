@@ -31,6 +31,11 @@ dependencies = [
     # "tqdm",
 ]
 
+[project.optional-dependencies]
+jax = [
+    "jax>=0.4.36",
+]
+
 
 [tool.uv]
 default-groups = ["dev", "lint", "type-check"]
@@ -41,7 +46,6 @@ dev = [
     "icecream",
     "ipdb",
     "ipykernel",
-    "jax>=0.4.36",
     "jupyter",
     "pytest",
     "pytest-cov",

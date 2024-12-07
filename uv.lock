@@ -863,13 +863,17 @@ name = "kajihs-utils"
 version = "0.1.0"
 source = { editable = "." }
 
+[package.optional-dependencies]
+jax = [
+    { name = "jax" },
+]
+
 [package.dev-dependencies]
 dev = [
     { name = "hatchling" },
     { name = "icecream" },
     { name = "ipdb" },
     { name = "ipykernel" },
-    { name = "jax" },
     { name = "jupyter" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -883,6 +887,7 @@ type-check = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "jax", marker = "extra == 'jax'", specifier = ">=0.4.36" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -890,7 +895,6 @@ dev = [
     { name = "icecream" },
     { name = "ipdb" },
     { name = "ipykernel" },
-    { name = "jax", specifier = ">=0.4.36" },
     { name = "jupyter" },
     { name = "pytest" },
     { name = "pytest-cov" },
