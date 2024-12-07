@@ -9,14 +9,15 @@ description = "Various, fully typed, hopefully sanely implemented and somewhat r
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
-keywords = ["python"] # TODO: Add these
+keywords = ["python", "tools", "utils"]
 
 classifiers = [ # https://pypi.org/classifiers/
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 
@@ -31,10 +32,8 @@ dependencies = [
     # "tqdm",
 ]
 
-[project.optional-dependencies]
-jax = [
-    "jax>=0.4.36",
-]
+    [project.optional-dependencies]
+    jax = ["jax>=0.4.36"]
 
 
 [tool.uv]
@@ -203,10 +202,7 @@ docstring-code-format = true
     omit = ["src/kajihs_utils/__about__.py", "hatch_build.py"]
 
     [tool.coverage.paths]
-    PackageName = [
-        "src/kajihs_utils",
-        "*/kajihs_utils/src/kajihs_utils",
-    ]
+    PackageName = ["src/kajihs_utils", "*/kajihs_utils/src/kajihs_utils"]
     tests = ["tests", "*/kajihs_utils/tests"]
 
     [tool.coverage.report]
