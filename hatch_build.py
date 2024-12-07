@@ -38,5 +38,5 @@ class AboutMetadataHookOld(MetadataHookInterface):
         metadata["urls"] = {
             "Repository": about.__repo_url__,
             "Issues": about.__issues_url__,
-            "Documentation": about.__documentation__,
+            # "Documentation": about.__documentation__,
         }
