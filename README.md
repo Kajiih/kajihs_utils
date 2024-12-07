@@ -8,10 +8,6 @@
 
 Various, fully typed, hopefully sanely implemented and somewhat random utilities.
 
-<p align="center">
-  <img src="media/package_illustration.png" alt="Illustration">
-</p>
-
 ## Contents <!-- omit from toc -->
 
 - [⬇️ Installation](#️-installation)
@@ -26,34 +22,16 @@ You can install **kajihs_utils** via pip:
 pip install kajihs-utils
 ```
 
-<!-- ### Requirements -->
-
 ## 🏃 Getting Started
 
 Embed code like this:
 
-```python:dev/readme_snippets/formatted/code_embedding_demo.py
-# This is embedded in the readme!
-print("The print output is formatted in a comment ->")  # Output: The print output is formatted in a comment ->
-
-print("Snippets are automatically formatted and embedded in the readme with the github workflow")  # Output: Snippets are automatically formatted and embedded in the readme with the github workflow
-
-print(f"Isn't cool {'!' * 3}?")  # Output: Isn't cool !!!?
+```python:dev/readme_snippets/formatted/features_demo.py
 ```
-
-[Documentation](https://kajihs-utils.readthedocs.io)
-
-<!-- ## 📔 Citation -->
 
 ## 🧾 License
 
 [MIT license](LICENSE)
-
-<!-- ## 🤝 Contributing -->
-
-## Credits <!-- omit from toc -->
-
-This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [Kajiih/cookiecutter-pypackage-kj](https://github.com/Kajiih/cookiecutter-pypackage-kj) project template based on  [audreyr/cookiecutter-pypackage](https://github.com/audreyr/cookiecutter-pypackage).
 
 <!-- Links -->
 [github-ci-image]: https://github.com/Kajiih/kajihs_utils/actions/workflows/build.yml/badge.svg?branch=main

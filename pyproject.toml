@@ -41,6 +41,7 @@ dev = [
     "icecream",
     "ipdb",
     "ipykernel",
+    "jax>=0.4.36",
     "jupyter",
     "pytest",
     "pytest-cov",
