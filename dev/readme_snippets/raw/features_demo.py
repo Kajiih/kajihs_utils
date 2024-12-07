@@ -7,4 +7,4 @@ print(get_first(d, ["x", "a", "b"]))
 
 # Batch a sequence:
 seq = list(range(10))
-list(batch(seq, 3))
+print(list(batch(seq, 3)))
