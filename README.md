@@ -20,6 +20,7 @@ pip install kajihs-utils
 
 ```python:dev/readme_snippets/formatted/features_demo.py
 from kajihs_utils import batch, get_first
+from kajihs_utils.loguru import prompt, setup_logging
 
 # Get first key existing in a dict:
 d = {"a": 1, "b": 2, "c": 3}
@@ -28,6 +29,13 @@ print(get_first(d, ["x", "a", "b"]))  # Output: 1
 # Batch a sequence:
 seq = list(range(10))
 print(list(batch(seq, 3)))  # Output: [[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]
+
+# === Loguru features ===
+# Better logged and formatted prompts
+prompt("Enter a number")  
+
+# Simply setup well formatted logging in files and console
+setup_logging()
 ```
 
 ## 🧾 License
