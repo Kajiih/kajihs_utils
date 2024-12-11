@@ -1,4 +1,4 @@
-name: 🪄 Code Embedder
+name: 🪄 Code Embedder test
 
 on:
   push:
@@ -43,9 +43,8 @@ jobs:
           source .venv/bin/activate
           echo PATH=$PATH >> $GITHUB_ENV
 
-      # Manually add extras used in snippet
       - name: 📥 Install the project
-        run: uv pip install ".[loguru]"
+        run: uv sync --all-extras --dev
 
       - name: 🪄 Format raw code snippets with ruff
         run: |
