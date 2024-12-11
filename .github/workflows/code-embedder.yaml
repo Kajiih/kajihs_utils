@@ -38,10 +38,10 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('uv.lock') }}
 
+      # Manually add extras used in snippet
       - name: 📥 Install the project
         run: |
-          uv pip install -e .
-          uv sync --all-extras --dev
+          uv pip install ".[loguru]"
 
       - name: 🪄 Format raw code snippets with ruff
         run: |
