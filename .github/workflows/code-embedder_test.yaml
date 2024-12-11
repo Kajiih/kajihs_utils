@@ -38,13 +38,13 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('uv.lock') }}
 
+      - name: 📥 Install the project
+        run: uv sync --all-extras --dev
+
       - name: 🏞️ Activate virtual environment
         run: |
           source .venv/bin/activate
           echo PATH=$PATH >> $GITHUB_ENV
-
-      - name: 📥 Install the project
-        run: uv sync --all-extras --dev
 
       - name: 🪄 Format raw code snippets with ruff
         run: |
