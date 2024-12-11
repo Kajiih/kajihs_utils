@@ -858,8 +858,6 @@ jax = [
 ]
 loguru = [
     { name = "loguru" },
-]
-rich = [
     { name = "rich" },
 ]
 
@@ -885,7 +883,7 @@ type-check = [
 requires-dist = [
     { name = "jax", marker = "extra == 'jax'", specifier = ">=0.4.36" },
     { name = "loguru", marker = "extra == 'loguru'", specifier = ">=0.7.3" },
-    { name = "rich", marker = "extra == 'rich'", specifier = ">=13.9.4" },
+    { name = "rich", marker = "extra == 'loguru'", specifier = ">=13.9.4" },
 ]
 
 [package.metadata.requires-dev]
