@@ -1,4 +1,4 @@
-name: 🪄 Code Embedder No uv
+name: 🪄 Code Embedder no uv
 
 on:
   push:
@@ -16,31 +16,32 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHON_VERSION: "3.12"
-      # UV_SYSTEM_PYTHON: 1
+      UV_SYSTEM_PYTHON: 1
 
     steps:
       - name: 🛎️ Checkout
         uses: actions/checkout@v4
 
-      # - name: 🐍 Install uv with caching
-      #   uses: astral-sh/setup-uv@v4
-      #   with:
-      #     enable-cache: true
+      - name: 🐍 Install uv with caching
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
 
       - name: 🐍 Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      # - name: 💾 Setup pip cache
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.cache/pip
-      #     key: ${{ runner.os }}-pip-${{ hashFiles('uv.lock') }}
+      - name: 💾 Setup pip cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('uv.lock') }}
 
       - name: 📥 Install the project
         run: |
-          pip install .
+          # uv sync --all-extras --dev
+          uv pip install -e ".[loguru]"
 
       - name: 🪄 Format raw code snippets with ruff
         run: |

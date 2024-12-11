@@ -17,7 +17,7 @@ jobs:
     env:
       PYTHON_VERSION: "3.12"
       UV_SYSTEM_PYTHON: 1
-      
+
     steps:
       - name: 🛎️ Checkout
         uses: actions/checkout@v4
@@ -41,7 +41,7 @@ jobs:
       - name: 📥 Install the project
         run: |
           uv sync --all-extras --dev
-          uv pip install .
+          uv pip install -e .
 
       - name: 🪄 Format raw code snippets with ruff
         run: |
