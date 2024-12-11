@@ -11,7 +11,7 @@ print(list(batch(seq, 3)))
 
 # === Loguru features ===
 # Better logged and formatted prompts
-prompt("Enter a number")
+prompt("Enter a number")  # snippet: no-exec
 
 # Simply setup well formatted logging in files and console
 setup_logging()

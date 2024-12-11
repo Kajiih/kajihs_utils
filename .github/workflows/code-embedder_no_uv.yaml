@@ -1,4 +1,4 @@
-name: 🪄 Code Embedder no uv
+name: 🪄 Code Embedder 2
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
       - name: 📥 Install the project
         run: |
           # uv sync --all-extras --dev
-          uv pip install -e ".[loguru]"
+          uv pip install ".[loguru]"
 
       - name: 🪄 Format raw code snippets with ruff
         run: |

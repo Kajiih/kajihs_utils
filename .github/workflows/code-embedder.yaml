@@ -40,8 +40,8 @@ jobs:
 
       - name: 📥 Install the project
         run: |
-          uv sync --all-extras --dev
           uv pip install -e .
+          uv sync --all-extras --dev
 
       - name: 🪄 Format raw code snippets with ruff
         run: |
