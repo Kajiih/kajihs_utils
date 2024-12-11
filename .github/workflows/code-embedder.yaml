@@ -38,14 +38,22 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('uv.lock') }}
 
-      # Manually add extras used in snippet
+      # # Manually add extras used in snippet
+      # - name: 📥 Install the project
+      #   run: uv pip install ".[loguru]"
+
       - name: 📥 Install the project
-        run: uv pip install ".[loguru]"
+        run: |
+          uv sync --all-extras --dev
+          uv pip install .
 
       - name: 🏞️ Activate virtual environment
         run: |
           source .venv/bin/activate
           echo PATH=$PATH >> $GITHUB_ENV
+
+      - name: 📥 Install the main package
+        run: uv pip install .
 
       - name: 🪄 Format raw code snippets with ruff
         run: |

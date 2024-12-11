@@ -39,7 +39,9 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('uv.lock') }}
 
       - name: 📥 Install the project
-        run: uv sync --all-extras --dev
+        run: |
+          uv sync --all-extras --dev
+          uv pip install .
 
       - name: 🏞️ Activate virtual environment
         run: |
