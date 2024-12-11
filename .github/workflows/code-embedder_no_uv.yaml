@@ -16,16 +16,16 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PYTHON_VERSION: "3.12"
-      UV_SYSTEM_PYTHON: 1
+      # UV_SYSTEM_PYTHON: 1
 
     steps:
       - name: 🛎️ Checkout
         uses: actions/checkout@v4
 
-      - name: 🐍 Install uv with caching
-        uses: astral-sh/setup-uv@v4
-        with:
-          enable-cache: true
+      # - name: 🐍 Install uv with caching
+      #   uses: astral-sh/setup-uv@v4
+      #   with:
+      #     enable-cache: true
 
       - name: 🐍 Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
