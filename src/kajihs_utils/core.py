@@ -1,4 +1,4 @@
-"""Core module."""
+"""General utils without dependencies."""
 
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 from typing import Any, Literal, overload
@@ -24,7 +24,7 @@ def get_first[K, V, D](
     d: Mapping[K, V], /, keys: Iterable[K], default: D = None, no_default: bool = False
 ) -> V | D:
     """
-    Return the first value for the first key that exists in the mapping.
+    Return the value for the first key that exists in the mapping.
 
     Args:
         d: The dictionary to search in.
@@ -62,6 +62,8 @@ def get_first[K, V, D](
 def batch[S: Sequence[Any]](seq: S, /, size: int) -> Iterator[S]:
     """
     Generate batches of the sequence.
+
+    Maybe you better use the itertools.batched, it works with any iterable!
 
     Args:
         seq: The sequence to batch.
