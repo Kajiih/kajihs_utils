@@ -12,7 +12,7 @@ from .arithmetic import (
 
 
 def auto_subplot(
-    size: int, /, ratio: float = 9 / 16, portrait: bool = False, **subplot_params: Any
+    size: int, /, ratio: float = 9 / 16, more_cols: bool = False, **subplot_params: Any
 ) -> tuple[Figure, ndarray[tuple[int], Any]]:
     """
     Automatically creates a subplot grid with an adequate number of rows and columns.
@@ -20,7 +20,7 @@ def auto_subplot(
     Args:
         size: The total number of subplots.
         ratio: The threshold aspect ratio between rows and columns.
-        portrait: Whether there should be more rows than columns instead of the
+        more_cols: Whether there should be columns than rows instead of the
             opposite
         **subplot_params: Additional keyword parameters for subplot.
 
@@ -29,7 +29,7 @@ def auto_subplot(
     """
     # Special case for 2
     large, small = (2, 1) if size == 2 else almost_factors(size, ratio)  # noqa: PLR2004
-    rows, cols = (large, small) if portrait else (small, large)
+    rows, cols = (small, large) if more_cols else (large, small)
 
     fig, axes = plt.subplots(rows, cols, **subplot_params)
 
