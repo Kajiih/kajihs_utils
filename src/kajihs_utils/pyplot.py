@@ -12,7 +12,12 @@ from .arithmetic import (
 
 
 def auto_subplot(
-    size: int, /, ratio: float = 9 / 16, more_cols: bool = False, **subplot_params: Any
+    size: int,
+    /,
+    ratio: float = 9 / 16,
+    more_cols: bool = False,
+    transposed: bool = False,
+    **subplot_params: Any,
 ) -> tuple[Figure, ndarray[tuple[int], Any]]:
     """
     Automatically creates a subplot grid with an adequate number of rows and columns.
@@ -22,6 +27,7 @@ def auto_subplot(
         ratio: The threshold aspect ratio between rows and columns.
         more_cols: Whether there should be columns than rows instead of the
             opposite
+        transposed: Whether to transpose the indexes before flattening.
         **subplot_params: Additional keyword parameters for subplot.
 
     Returns:
@@ -35,6 +41,8 @@ def auto_subplot(
 
     # if isinstance(axes, np.ndarray):
     #     axes = axes.flatten()
+    if transposed:
+        axes = axes.T
     axes = axes.flatten()
 
     # Hide the remaining axes if there are more axes than subplots
