@@ -14,4 +14,4 @@ print(list(batch(seq, 3)))
 prompt("Enter a number")  # snippet: no-exec
 
 # Simply setup well formatted logging in files and console
-setup_logging("app", log_dir="logs")
+setup_logging(prefix="app", log_dir="logs")

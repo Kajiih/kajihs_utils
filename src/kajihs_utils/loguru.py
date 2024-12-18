@@ -10,7 +10,7 @@ from loguru import logger
 from rich.prompt import Prompt
 
 
-def prompt(prompt: str) -> str:
+def prompt(prompt: str, /) -> str:
     """Wrap rich.Prompt.ask to add newline and color."""
     val = Prompt.ask(f"\n[cyan bold]{prompt}[/cyan bold]")
     logger.debug(f'Prompt: "{prompt}" -> "{val}"')
