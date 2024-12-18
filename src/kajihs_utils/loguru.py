@@ -3,6 +3,7 @@
 import inspect
 import logging
 import sys
+from pathlib import Path
 from typing import override
 
 from loguru import logger
@@ -43,31 +44,42 @@ class InterceptHandler(logging.Handler):
         logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
 
 
-def setup_logging(file_name: str = "app") -> None:
-    """Set up logging."""
+def setup_logging(prefix: str = "app", /, log_dir: str = "logs") -> None:
+    """
+    Set up beautiful loguru logging in files and console.
+
+    Redirects logging with Loguru, creates 2 logging files with and without
+    colors and log to console.
+
+    Args:
+        prefix: Prefix for the log files without extensions.
+        log_dir: Directory path to store log files.
+
+    """
     # Redirect logging with Loguru
     logging.basicConfig(handlers=[InterceptHandler()], level=logging.WARNING, force=True)
 
     logger.remove()
 
+    dir_path = Path(log_dir)
     logger.add(
-        f"logs/{file_name}.log",  # Log to a file
-        level="DEBUG",  # Minimum logging level
+        dir_path / f"{prefix}.log",
+        level="DEBUG",
         format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
-        rotation="1 week",  # Rotate logs weekly
-        compression="zip",  # Compress rotated logs
+        rotation="1 week",
+        compression="zip",
     )
     logger.add(
-        f"logs/{file_name}_color.log",  # Log to a file
-        level="DEBUG",  # Minimum logging level
+        dir_path / f"{prefix}.clog",
+        level="DEBUG",
         # format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
-        rotation="1 week",  # Rotate logs weekly
-        compression="zip",  # Compress rotated logs
+        rotation="1 week",
+        compression="zip",
         colorize=True,
     )
     logger.add(
-        sys.stdout,  # Log to the console
-        level="INFO",  # Minimum logging level for the console
+        sys.stdout,
+        level="INFO",
         # format="<green>{time:YYYY-MM-DD HH:mm:ss}</green> | <level>{message}</level>",
         format="<level>{message}</level>",
     )
