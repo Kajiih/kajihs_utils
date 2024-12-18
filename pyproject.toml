@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "kajihs_utils"
 dynamic = ["version", "authors", "urls"]
-description = "Various, fully typed, hopefully sanely implemented and somewhat random utilities."
+description = "Fully typed, plausibly practical, and remarkably random utilities for me—and maybe for you too."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
@@ -33,11 +33,9 @@ dependencies = [
 ]
 
     [project.optional-dependencies]
-jax = ["jax>=0.4.36"]
-loguru = ["loguru>=0.7.3", "rich>=13.9.4"]
-pyplot = [
-    "matplotlib>=3.10.0",
-]
+    jax = ["jax>=0.4.36"]
+    loguru = ["loguru>=0.7.3", "rich>=13.9.4"]
+    pyplot = ["matplotlib>=3.10.0"]
 
 
 [tool.uv]

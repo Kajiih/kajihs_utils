@@ -6,7 +6,7 @@
 
 # Kajihs Utils
 
-Various, fully typed, hopefully sanely implemented and somewhat random utilities.
+Fully typed, plausibly practical, and remarkably random utilities for me—and maybe for you too.
 
 ## ⬇️ Installation
 
