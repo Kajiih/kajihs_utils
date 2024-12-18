@@ -44,7 +44,7 @@ class InterceptHandler(logging.Handler):
         logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
 
 
-def setup_logging(prefix: str = "app", /, log_dir: str = "logs") -> None:
+def setup_logging(prefix: str = "app", /, log_dir: str | Path = "logs") -> None:
     """
     Set up beautiful loguru logging in files and console.
 
@@ -61,16 +61,16 @@ def setup_logging(prefix: str = "app", /, log_dir: str = "logs") -> None:
 
     logger.remove()
 
-    dir_path = Path(log_dir)
+    log_dir = Path(log_dir)
     logger.add(
-        dir_path / f"{prefix}.log",
+        log_dir / f"{prefix}.log",
         level="DEBUG",
         format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
         rotation="1 week",
         compression="zip",
     )
     logger.add(
-        dir_path / f"{prefix}.clog",
+        log_dir / f"{prefix}.clog",
         level="DEBUG",
         # format="{time:YYYY-MM-DD HH:mm:ss} | {level} | {message}",
         rotation="1 week",
