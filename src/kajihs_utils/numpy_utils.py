@@ -117,4 +117,3 @@ def find_closest[T](
         closest_indices = closest_indices[0]
 
     return closest_indices
-
