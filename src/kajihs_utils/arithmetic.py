@@ -17,7 +17,7 @@ def closest_factors(n: int, /) -> tuple[int, int]:
         A tuple containing the two closest factors of n, the larger first.
 
     Example:
-        >>> close_factors(99)
+        >>> closest_factors(99)
         (11, 9)
     """
     factor1 = 0
