@@ -5,7 +5,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 __app_name__ = "kajihs_utils"
-__version__ = "0.4.1"
+__version__ = "0.4.2"
 __authors__ = ["Kajih"]
 __author_emails__ = ["itskajih@gmail.com"]
 __repo_url__ = "https://github.com/Kajiih/kajihs_utils"

@@ -1,6 +1,6 @@
 """Utils for matplotlib.pyplot."""
 
-from typing import Any
+from typing import Any, cast
 
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
@@ -10,6 +10,8 @@ from .arithmetic import (
     almost_factors,
 )
 
+type AxesFlatArray = ndarray[tuple[int], Any]
+
 
 def auto_subplot(
     size: int,
@@ -17,8 +19,9 @@ def auto_subplot(
     ratio: float = 9 / 16,
     more_cols: bool = False,
     transposed: bool = False,
+    return_all_axes: bool = False,
     **subplot_params: Any,
-) -> tuple[Figure, ndarray[tuple[int], Any]]:
+) -> tuple[Figure, AxesFlatArray]:
     """
     Automatically creates a subplot grid with an adequate number of rows and columns.
 
@@ -28,6 +31,7 @@ def auto_subplot(
         more_cols: Whether there should be columns than rows instead of the
             opposite
         transposed: Whether to transpose the indexes before flattening.
+        return_all_axes: Wether to return axis beyond size in the flatten axes.
         **subplot_params: Additional keyword parameters for subplot.
 
     Returns:
@@ -43,10 +47,12 @@ def auto_subplot(
     #     axes = axes.flatten()
     if transposed:
         axes = axes.T
-    axes = axes.flatten()
+    axes: AxesFlatArray = axes.flatten()
 
     # Hide the remaining axes if there are more axes than subplots
     for i in range(size, len(axes)):
         axes[i].set_axis_off()
+
+    axes = axes if return_all_axes else cast(AxesFlatArray, axes[:size])  # noqa: TC006
 
     return fig, axes
