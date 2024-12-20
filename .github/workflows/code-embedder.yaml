@@ -40,7 +40,7 @@ jobs:
 
       # Manually add extras used in snippet
       - name: 📥 Install the project
-        run: uv pip install ".[loguru]"
+        run: uv pip install ".[loguru, numpy]"
 
       - name: 🪄 Format raw code snippets with ruff
         run: |
