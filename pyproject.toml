@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling >= 1.27"]
 build-backend = "hatchling.build"
 
 [project]
@@ -7,7 +7,7 @@ name = "kajihs_utils"
 dynamic = ["version", "authors", "urls"]
 description = "Fully typed, plausibly practical, and remarkably random utilities for me—and maybe for you too."
 readme = "README.md"
-license = { file = "LICENSE" }
+license-files = ["LICENSE"]
 requires-python = ">=3.12"
 keywords = [
     "python",
@@ -191,9 +191,9 @@ exclude = []
         convention = "google"
         [tool.ruff.lint.pylint]
         max-args = 6
-[tool.ruff.format]
-preview = true
-docstring-code-format = true
+    [tool.ruff.format]
+    preview = true
+    docstring-code-format = true
 
 
 # == Pytest == #
