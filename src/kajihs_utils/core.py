@@ -24,7 +24,7 @@ def get_first[K, V, D](
     d: Mapping[K, V], /, keys: Iterable[K], default: D = None, no_default: bool = False
 ) -> V | D:
     """
-    Return the value for the first key that exists in the mapping.
+    Return the value of the first key that exists in the mapping.
 
     Args:
         d: The dictionary to search in.
