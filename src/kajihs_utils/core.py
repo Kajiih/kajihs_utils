@@ -3,6 +3,8 @@
 from collections.abc import Iterable, Iterator, Mapping, Sequence
 from typing import Any, Literal, overload
 
+from typing_extensions import deprecated  # TODO: Replace with typing when support for 3.12 drops
+
 
 @overload
 def get_first[K, V, D](d: Mapping[K, V], /, keys: Iterable[K], default: D = None) -> V | D: ...
@@ -59,11 +61,10 @@ def get_first[K, V, D](
     return default
 
 
+@deprecated("Use itertools.batched")
 def batch[S: Sequence[Any]](seq: S, /, size: int) -> Iterator[S]:
     """
     Generate batches of the sequence.
-
-    Maybe you better use the itertools.batched, it works with any iterable!
 
     Args:
         seq: The sequence to batch.

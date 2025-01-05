@@ -29,16 +29,7 @@ classifiers = [ # https://pypi.org/classifiers/
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 
-dependencies = [
-    # "frosch",
-    # "loguru",
-    # "rich",
-    # "typed-settings[attrs,cattrs]",
-    # "python-dotenv",
-    # "cyclopts",
-    # "toolz",
-    # "tqdm",
-]
+dependencies = ["typing-extensions>=4.12.2"]
 
     [project.optional-dependencies]
     jax = ["jax>=0.4.36"]

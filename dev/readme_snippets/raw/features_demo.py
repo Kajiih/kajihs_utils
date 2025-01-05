@@ -1,14 +1,14 @@
-from kajihs_utils import batch, get_first
+from kajihs_utils import get_first
 from kajihs_utils.loguru import prompt, setup_logging
 from kajihs_utils.numpy_utils import find_closest
 
-# Get first key existing in a dict:
+# Useful protocols for structural subtyping
+from kajihs_utils.protocols import SupportsLessThan
+
+# Get first key existing in a dict
 d = {"a": 1, "b": 2, "c": 3}
 print(get_first(d, ["x", "a", "b"]))
 
-# Batch a sequence:
-seq = list(range(10))
-print(list(batch(seq, 3)))
 
 # === Loguru features ===
 # Better logged and formatted prompts
