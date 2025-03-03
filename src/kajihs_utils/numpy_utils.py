@@ -1,13 +1,19 @@
 """Tools for numpy."""
 
-from collections.abc import Iterable
-from typing import Any, Literal
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any, Literal, override
 
 import numpy as np
-from numpy import dtype, int_, ndarray
-from numpy.typing import ArrayLike, NDArray
+from numpy import dtype, float64, floating, int_, ndarray
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from numpy.typing import ArrayLike, NDArray
 
 type Norm = float | Literal["fro", "nuc"]
+type AnyFloat = float | float64
 
 
 class IncompatibleShapeError(ValueError):
@@ -117,3 +123,52 @@ def find_closest[T](
         closest_indices = closest_indices[0]
 
     return closest_indices
+
+
+class Vec2d(ndarray[Literal[2], dtype[float64]]):
+    """A 2D vector subclassing numpy.ndarray with .x and .y properties."""
+
+    def __new__(cls, x: AnyFloat, y: AnyFloat) -> Vec2d:  # noqa: D102
+        obj = np.asarray([x, y], dtype=np.float64).view(cls)
+        return obj
+
+    @property
+    def x(self) -> float:
+        """X coordinate."""
+        return self[0]
+
+    @x.setter
+    def x(self, value: float) -> None:
+        self[0] = value
+
+    @property
+    def y(self) -> float:
+        """Y coordinate."""
+        return self[1]
+
+    @y.setter
+    def y(self, value: float) -> None:
+        self[1] = value
+
+    def magnitude(self) -> floating[Any]:
+        """Magnitude or norm of the vector."""
+        return np.linalg.norm(self)
+
+    def normalized(self) -> Vec2d:
+        """Return a normalized version of the vector."""
+        mag = self.magnitude()
+        return self if mag == 0 else Vec2d(self.x / mag, self.y / mag)
+
+    def angle(self) -> float:
+        """Return the angle (in degrees) between the vector and the positive x-axis."""
+        return np.degrees(np.arctan2(self.y, self.x))
+
+    def rotate(self, degrees_angle: float) -> Vec2d:
+        """Rotates the vector counterclockwise by a given angle (in degrees)."""
+        rad = np.radians(degrees_angle)
+        rot_matrix = np.array([[np.cos(rad), -np.sin(rad)], [np.sin(rad), np.cos(rad)]])
+        return Vec2d(*(rot_matrix @ self))
+
+    @override
+    def __repr__(self) -> str:
+        return f"Vec2d({self.x:.2f}, {self.y:.2f})"
