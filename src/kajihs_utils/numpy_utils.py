@@ -163,11 +163,23 @@ class Vec2d(ndarray[Literal[2], dtype[float64]]):
         """Return the angle (in degrees) between the vector and the positive x-axis."""
         return np.degrees(np.arctan2(self.y, self.x))
 
-    def rotate(self, degrees_angle: float) -> Vec2d:
-        """Rotates the vector counterclockwise by a given angle (in degrees)."""
+    def rotate(self, degrees_angle: float, center: tuple[float, float] = (0, 0)) -> Vec2d:
+        """Rotates the vector counterclockwise by a given angle (in degrees) around the point (cx, cy)."""
+        cx, cy = center[0], center[1]
+        # Step 1: Translate the vector to the origin (subtract the center of rotation)
+        translated_x = self.x - cx
+        translated_y = self.y - cy
+
+        # Step 2: Rotate the translated vector
         rad = np.radians(degrees_angle)
         rot_matrix = np.array([[np.cos(rad), -np.sin(rad)], [np.sin(rad), np.cos(rad)]])
-        return Vec2d(*(rot_matrix @ self))
+        rotated_vector = rot_matrix @ np.array([translated_x, translated_y])
+
+        # Step 3: Translate the vector back to its original position
+        new_x = rotated_vector[0] + cx
+        new_y = rotated_vector[1] + cy
+
+        return Vec2d(new_x, new_y)
 
     @override
     def __repr__(self) -> str:
