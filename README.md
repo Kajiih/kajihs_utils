@@ -46,14 +46,14 @@ print(find_closest(x, [[-1, 2], [15, 12]]))  # Output: [0 1]
 
 # Vec2d class
 v = Vec2d(3.0, 4.0)
-print("Original Vec2d:", v)  # Output: Original Vec2d: [3. 4.]
-print("As a tuple", tuple(v))  # Output: As a tuple (np.float64(3.0), np.float64(4.0))
-print("x coordinate:", v.x)  # Output: x coordinate: 3.0
-print("y coordinate:", v.y)  # Output: y coordinate: 4.0
-print("Magnitude:", v.magnitude())  # Output: Magnitude: 5.0
-print("Normalized vector:", v.normalized())  # Output: Normalized vector: [0.6 0.8]
-print("Angle (degrees):", v.angle())  # Output: Angle (degrees): 53.13010235415598
-print("Rotated by 90 degrees:", v.rotate(90, center=(1, 1)))  # Output: Rotated by 90 degrees: [-2.  3.]
+print(v)  # Output: [3. 4.]
+print(tuple(v))  # Output: (np.float64(3.0), np.float64(4.0))
+print(v.x)  # Output: 3.0
+print(v.y)  # Output: 4.0
+print(v.magnitude())  # Output: 5.0
+print(v.normalized())  # Output: [0.6 0.8]
+print(v.angle())  # Output: 53.13010235415598
+print(v.rotate(90, center=(1, 1)))  # Output: [-2.  3.]
 ```
 
 ## 🧾 License
