@@ -176,22 +176,11 @@ class TestFindClosest:
             find_closest(x, target, norm_ord="nuc")
 
     def test_nuc_norm_for_2d_arrays(self):
-        # The nuclear norm is defined for matrices (2D).
-        x = np.array([[0, 0], [10, 10], [20, 20]])
-        target = np.array([6, 5])
-        # This might still raise a ValueError internally if the nuclear norm isn't defined for single rows.
-        # For a single vector (1D considered as 2D?), let's reshape target to ensure it's 2D.
         x2 = np.array([[[0, 0]], [[10, 10]], [[20, 20]]])  # shape (3, 1, 2)
         target2 = np.array([[6, 5]])  # shape (1,2)
-        # Here x2 elements are (1,2) matrices. Nuclear norm is defined.
-        # Distances:
-        # x2[0]: [[0,0]] vs [[6,5]] difference [[-6,-5]], norm = nuclear_norm = sum of singular values
-        # Singular values of [[-6, -5]] is sqrt( (-6)^2 + (-5)^2 ) = sqrt(61)
-        # similarly for others...
-        # Just check no error is raised:
         result = find_closest(x2, target2, norm_ord="nuc")
         # Should return a single index
-        assert isinstance(result, np.integer)
+        assert result == 1
 
     def test_custom_norm_ord_int(self):
         # Test a custom integer norm (like 1-norm)

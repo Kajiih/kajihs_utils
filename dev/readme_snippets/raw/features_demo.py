@@ -1,6 +1,6 @@
 from kajihs_utils import get_first
 from kajihs_utils.loguru import prompt, setup_logging
-from kajihs_utils.numpy_utils import find_closest
+from kajihs_utils.numpy_utils import find_closest, Vec2d
 
 # Useful protocols for structural subtyping
 from kajihs_utils.protocols import SupportsLessThan
@@ -22,3 +22,14 @@ import numpy as np
 
 x = np.array([[0, 0], [10, 10], [20, 20]])
 print(find_closest(x, [[-1, 2], [15, 12]]))
+
+# Vec2d class
+v = Vec2d(3.0, 4.0)
+print("Original Vec2d:", v)
+print("As a tuple", tuple(v))
+print("x coordinate:", v.x)
+print("y coordinate:", v.y)
+print("Magnitude:", v.magnitude())
+print("Normalized vector:", v.normalized())
+print("Angle (degrees):", v.angle())
+print("Rotated by 90 degrees:", v.rotate(90, center=(1, 1)))
