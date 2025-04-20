@@ -20,8 +20,6 @@ pip install kajihs-utils
 
 ```python:dev/readme_snippets/formatted/features_demo.py
 from kajihs_utils import get_first, is_sorted
-from kajihs_utils.loguru import prompt, setup_logging
-from kajihs_utils.numpy_utils import Vec2d, find_closest
 
 # Useful protocols for structural subtyping
 from kajihs_utils.protocols import SupportsAllComparisons, SupportsDunderLT
@@ -36,6 +34,8 @@ print(is_sorted("cba", reverse=True))  # Output: True
 print(is_sorted([0, 1, 0]))  # Output: False
 
 # === Loguru features ===
+from kajihs_utils.loguru import prompt, setup_logging
+
 # Better logged and formatted prompts
 prompt("Enter a number")  
 
@@ -44,6 +44,8 @@ setup_logging(prefix="app", log_dir="logs")
 
 # === Numpy features ===
 import numpy as np
+
+from kajihs_utils.numpy_utils import Vec2d, find_closest
 
 x = np.array([[0, 0], [10, 10], [20, 20]])
 print(find_closest(x, [[-1, 2], [15, 12]]))  # Output: [0 1]
@@ -58,6 +60,13 @@ print(v.magnitude())  # Output: 5.0
 print(v.normalized())  # Output: [0.6 0.8]
 print(v.angle())  # Output: 53.13010235415598
 print(v.rotate(90, center=(1, 1)))  # Output: [-2.  3.]
+
+# === Whenever features ===
+from datetime import datetime
+
+from kajihs_utils.whenever import AllDateTime, ExactDateTime, dt_to_system_datetime  # Useful types
+
+print(dt_to_system_datetime(datetime.now()))  # Output: 2025-04-20T21:57:31.460653+00:00
 ```
 
 ## 🧾 License
