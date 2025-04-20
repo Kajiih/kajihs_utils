@@ -1,9 +1,15 @@
 """General utils without dependencies."""
 
+import operator
 from collections.abc import Iterable, Iterator, Mapping, Sequence
+from itertools import pairwise, starmap
 from typing import Any, Literal, overload
 
 from typing_extensions import deprecated  # TODO: Replace with typing when support for 3.12 drops
+
+from kajihs_utils.protocols import (
+    SupportsDunderLT,
+)
 
 
 @overload
@@ -81,3 +87,36 @@ def batch[S: Sequence[Any]](seq: S, /, size: int) -> Iterator[S]:
     l = len(seq)
     for ndx in range(0, l, size):
         yield seq[ndx : min(ndx + size, l)]  # pyright: ignore[reportReturnType]
+
+
+def is_sorted(values: Iterable[SupportsDunderLT[Any]], /, reverse: bool = False) -> bool:
+    """
+    Determine if the given iterable is sorted in ascending or descending order.
+
+    Args:
+        values: An iterable of comparable items supporting the < operator.
+        reverse: If False (default), checks for non-decreasing order; if True, checks for non-increasing order.
+
+    Returns:
+        True if the sequence is sorted according to the given order, False otherwise.
+
+    Examples:
+        >>> is_sorted([1, 2, 2, 3])
+        True
+        >>> is_sorted([3, 2, 1], reverse=True)
+        True
+        >>> is_sorted([2, 1, 3])
+        False
+        >>> is_sorted([])
+        True
+        >>> is_sorted([42])
+        True
+        >>> # Works with generators as well
+        >>> is_sorted(x * x for x in [1, 2, 3, 4])
+        True
+        >>> # Equal elements are considered sorted
+        >>> is_sorted([1, 1, 1])
+        True
+    """
+    op = operator.le if not reverse else operator.ge
+    return all(starmap(op, pairwise(values)))
