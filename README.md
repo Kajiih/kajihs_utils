@@ -19,17 +19,21 @@ pip install kajihs-utils
 ## 🏃 Getting Started
 
 ```python:dev/readme_snippets/formatted/features_demo.py
-from kajihs_utils import get_first
+from kajihs_utils import get_first, is_sorted
 from kajihs_utils.loguru import prompt, setup_logging
-from kajihs_utils.numpy_utils import find_closest, Vec2d
+from kajihs_utils.numpy_utils import Vec2d, find_closest
 
 # Useful protocols for structural subtyping
-from kajihs_utils.protocols import SupportsLessThan
+from kajihs_utils.protocols import SupportsAllComparisons, SupportsDunderLT
 
 # Get first key existing in a dict
 d = {"a": 1, "b": 2, "c": 3}
 print(get_first(d, ["x", "a", "b"]))  # Output: 1
 
+# Check if an iterable is sorted
+print(is_sorted([1, 2, 2, 3]))  # Output: True
+print(is_sorted("cba", reverse=True))  # Output: True
+print(is_sorted([0, 1, 0]))  # Output: False
 
 # === Loguru features ===
 # Better logged and formatted prompts
