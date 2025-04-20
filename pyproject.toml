@@ -13,10 +13,12 @@ keywords = [
     "python",
     "tools",
     "utils",
+    "jax",
     "loguru",
     "matplotlib",
     "pyplot",
     "numpy",
+    "whenever",
 ]
 
 classifiers = [ # https://pypi.org/classifiers/
@@ -36,6 +38,7 @@ dependencies = ["typing-extensions>=4.12.2"]
     loguru = ["loguru>=0.7.3", "rich>=13.9.4"]
     pyplot = ["matplotlib>=3.10.0"]
     numpy = ["numpy>=2.2.0"]
+    whenever = ["whenever>=0.7.3"]
 
 
 [tool.uv]

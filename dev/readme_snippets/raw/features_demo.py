@@ -1,6 +1,4 @@
 from kajihs_utils import get_first, is_sorted
-from kajihs_utils.loguru import prompt, setup_logging
-from kajihs_utils.numpy_utils import Vec2d, find_closest
 
 # Useful protocols for structural subtyping
 from kajihs_utils.protocols import SupportsAllComparisons, SupportsDunderLT
@@ -15,6 +13,8 @@ print(is_sorted("cba", reverse=True))
 print(is_sorted([0, 1, 0]))
 
 # === Loguru features ===
+from kajihs_utils.loguru import prompt, setup_logging
+
 # Better logged and formatted prompts
 prompt("Enter a number")  # snippet: no-exec
 
@@ -23,6 +23,8 @@ setup_logging(prefix="app", log_dir="logs")
 
 # === Numpy features ===
 import numpy as np
+
+from kajihs_utils.numpy_utils import Vec2d, find_closest
 
 x = np.array([[0, 0], [10, 10], [20, 20]])
 print(find_closest(x, [[-1, 2], [15, 12]]))
@@ -37,3 +39,10 @@ print(v.magnitude())
 print(v.normalized())
 print(v.angle())
 print(v.rotate(90, center=(1, 1)))
+
+# === Whenever features ===
+from datetime import datetime
+
+from kajihs_utils.whenever import AllDateTime, ExactDateTime, dt_to_system_datetime  # Useful types
+
+print(dt_to_system_datetime(datetime.now()))
