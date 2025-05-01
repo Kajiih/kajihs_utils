@@ -86,7 +86,7 @@ from datetime import datetime
 
 from kajihs_utils.whenever import AllDateTime, ExactDateTime, dt_to_system_datetime  # Useful types
 
-print(dt_to_system_datetime(datetime.now()))  # Output: 2025-05-01T09:46:55.165858+00:00
+print(dt_to_system_datetime(datetime.now()))  # Output: 2025-05-01T09:48:13.348903+00:00
 ```
 
 ## 🧾 License
