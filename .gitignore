@@ -171,6 +171,7 @@ cython_debug/
 
 # dev
 old/
+digest*
 
 # Code embedding
 dev/readme_snippets/formatted/
