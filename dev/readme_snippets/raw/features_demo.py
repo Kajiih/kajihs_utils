@@ -1,7 +1,10 @@
-from kajihs_utils import get_first, is_sorted
-
 # Useful protocols for structural subtyping
 from kajihs_utils.protocols import SupportsAllComparisons, SupportsDunderLT
+
+x: SupportsAllComparisons[int]
+
+# === Core Algorithm Features ===
+from kajihs_utils import get_first, is_sorted
 
 # Get first key existing in a dict
 d = {"a": 1, "b": 2, "c": 3}
@@ -11,6 +14,23 @@ print(get_first(d, ["x", "a", "b"]))
 print(is_sorted([1, 2, 2, 3]))
 print(is_sorted("cba", reverse=True))
 print(is_sorted([0, 1, 0]))
+
+from kajihs_utils.core import bisect_predicate
+
+# Find partition points in sorted data
+numbers = [1, 3, 5, 7, 9]
+first_big = bisect_predicate(numbers, lambda x: x < 6)
+print(f"First number >= 6 is at index {first_big}")
+
+# Works with custom objects and complex predicates
+records = [
+    {"temp": 12, "rain": 0.1},
+    {"temp": 15, "rain": 0.3},
+    {"temp": 18, "rain": 0.0},  # First "nice" day: temp >15 AND rain <0.2
+    {"temp": 20, "rain": 0.1},
+]
+nice_day_idx = bisect_predicate(records, lambda day: not (day["temp"] > 15 and day["rain"] < 0.2))
+print(f"First nice day at index {nice_day_idx}")
 
 # === Loguru features ===
 from kajihs_utils.loguru import prompt, setup_logging

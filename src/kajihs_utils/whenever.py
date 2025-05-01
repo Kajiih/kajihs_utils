@@ -1,7 +1,8 @@
 """Utils for better date and times, specifically using whenever."""
 
 from datetime import datetime
-from whenever import LocalDateTime, ZonedDateTime, Instant, OffsetDateTime, SystemDateTime
+
+from whenever import Instant, LocalDateTime, OffsetDateTime, SystemDateTime, ZonedDateTime
 
 type ExactDateTime = ZonedDateTime | Instant | OffsetDateTime | SystemDateTime
 
